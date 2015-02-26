@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>nl.ru</groupId>
+    <artifactId>open-source-maven-parent-pom</artifactId>
+    <name>Open source Maven parent POM</name>
+    <description>The parent POM file for all Radboud University Java open source projects.</description>
+    <url>https://github.com/radboud-university-isc-java/open-source-maven-parent-pom</url>
+    <packaging>pom</packaging>
+    <version>1.0.0-SNAPSHOT</version>
+
+    <scm>
+        <url>https://github.com/radboud-university-isc-java/test-categories</url>
+        <connection>scm:git:git://github.com/radboud-university-isc-java/open-source-maven-parent-pom.git</connection>
+        <developerConnection>
+            scm:git:git@github.com:radboud-university-isc-java/open-source-maven-parent-pom.git
+        </developerConnection>
+    </scm>
+
+    <licenses>
+        <license>
+            <name>Unlicense</name>
+            <url>http://unlicense.org/</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <organization>
+        <name>Radboud University</name>
+        <url>http://www.ru.nl/</url>
+    </organization>
+
+    <developers>
+        <developer>
+            <email>p.vandongen@ru.nl</email>
+            <name>Piet van Dongen</name>
+            <url>https://github.com/pietvandongen</url>
+            <id>pietvandongen</id>
+            <organization>Radboud University</organization>
+            <organizationUrl>http://www.ru.nl</organizationUrl>
+            <roles>
+                <role>developer</role>
+            </roles>
+        </developer>
+
+        <developer>
+            <email>j.vanderlinden@ru.nl</email>
+            <name>Jaap van der Linden</name>
+            <organization>Radboud University</organization>
+            <organizationUrl>http://www.ru.nl</organizationUrl>
+            <roles>
+                <role>developer</role>
+            </roles>
+        </developer>
+
+        <developer>
+            <email>g.tennapel@ru.nl</email>
+            <name>Gerbrand ten Napel</name>
+            <organization>Radboud University</organization>
+            <organizationUrl>http://www.ru.nl</organizationUrl>
+            <roles>
+                <role>developer</role>
+            </roles>
+        </developer>
+
+        <developer>
+            <email>j.nooitgedagt@ru.nl</email>
+            <name>Janneke Nooitgedagt</name>
+            <organization>Radboud University</organization>
+            <organizationUrl>http://www.ru.nl</organizationUrl>
+            <roles>
+                <role>developer</role>
+            </roles>
+        </developer>
+
+        <developer>
+            <email>e.wolswijk@ru.nl</email>
+            <name>Ernst Wolswijk</name>
+            <url>https://github.com/progig</url>
+            <id>progig</id>
+            <organization>Radboud University</organization>
+            <organizationUrl>http://www.ru.nl</organizationUrl>
+            <roles>
+                <role>developer</role>
+            </roles>
+        </developer>
+    </developers>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <maven-compiler-plugin.version>3.2</maven-compiler-plugin.version>
+        <exec-maven-plugin.version>1.3.2</exec-maven-plugin.version>
+        <maven-war-plugin.version>2.5</maven-war-plugin.version>
+        <maven-surefire-plugin.version>2.18</maven-surefire-plugin.version>
+        <maven-enforcer-plugin>1.3.1</maven-enforcer-plugin>
+        <org.apache.maven.plugins.maven-javadoc-plugin.version>
+            2.10.1
+        </org.apache.maven.plugins.maven-javadoc-plugin.version>
+        <org.apache.maven.plugins.maven-source-plugin.version>2.4</org.apache.maven.plugins.maven-source-plugin.version>
+        <maven-surefire-plugin.version>2.18</maven-surefire-plugin.version>
+        <maven-enforcer-plugin>1.3.1</maven-enforcer-plugin>
+        <maven-javadoc-plugin.version>2.10.1</maven-javadoc-plugin.version>
+        <maven-project-info-reports-plugin.version>2.7</maven-project-info-reports-plugin.version>
+        <maven-pmd-plugin.version>3.3</maven-pmd-plugin.version>
+        <maven-checkstyle-plugin.version>2.13</maven-checkstyle-plugin.version>
+        <org.codehaus.mojo.taglist-maven-plugin.version>2.4</org.codehaus.mojo.taglist-maven-plugin.version>
+        <org.codehaus.mojo.findbugs-maven-plugin.version>3.0.0</org.codehaus.mojo.findbugs-maven-plugin.version>
+        <versions-maven-plugin.version>2.1</versions-maven-plugin.version>
+        <org.apache.maven.plugins.maven-jxr-plugin.version>2.5</org.apache.maven.plugins.maven-jxr-plugin.version>
+        <org.codehaus.mojo.jdepend-maven-plugin.version>2.0</org.codehaus.mojo.jdepend-maven-plugin.version>
+        <org.apache.maven.plugins.maven-gpg-plugin.version>1.6</org.apache.maven.plugins.maven-gpg-plugin.version>
+        <org.sonatype.plugins.nexus-staging-maven-plugin.version>
+            1.6.5
+        </org.sonatype.plugins.nexus-staging-maven-plugin.version>
+    </properties>
+
+    <profiles>
+        <profile>
+            <id>continuous-integration</id>
+            <activation>
+                <property>
+                    <name>continuousIntegration</name>
+                    <value>true</value>
+                </property>
+            </activation>
+            <distributionManagement>
+                <snapshotRepository>
+                    <id>ossrh</id>
+                    <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+                </snapshotRepository>
+                <repository>
+                    <id>ossrh</id>
+                    <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+                </repository>
+            </distributionManagement>
+            <repositories>
+                <repository>
+                    <id>snapshots-repo</id>
+                    <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+                    <releases>
+                        <enabled>false</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>true</enabled>
+                    </snapshots>
+                </repository>
+            </repositories>
+            <reporting>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <version>${maven-javadoc-plugin.version}</version>
+                        <configuration>
+                            <show>private</show>
+                        </configuration>
+                        <reportSets>
+                            <reportSet>
+                                <id>default</id>
+                                <reports>
+                                    <report>javadoc</report>
+                                </reports>
+                            </reportSet>
+                        </reportSets>
+                    </plugin>
+
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-project-info-reports-plugin</artifactId>
+                        <version>${maven-project-info-reports-plugin.version}</version>
+                        <configuration>
+                            <dependencyLocationsEnabled>false</dependencyLocationsEnabled>
+                        </configuration>
+                    </plugin>
+
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-checkstyle-plugin</artifactId>
+                        <version>${maven-checkstyle-plugin.version}</version>
+                        <configuration>
+                            <configLocation>
+                                https://glanslibel2.uci.ru.nl/java/checkstyle-config/raw/master/checkstyle.xml
+                            </configLocation>
+                        </configuration>
+                        <reportSets>
+                            <reportSet>
+                                <reports>
+                                    <report>checkstyle</report>
+                                </reports>
+                            </reportSet>
+                        </reportSets>
+                    </plugin>
+
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-jxr-plugin</artifactId>
+                        <version>${org.apache.maven.plugins.maven-jxr-plugin.version}</version>
+                        <configuration>
+                            <linkJavadoc>true</linkJavadoc>
+                        </configuration>
+                    </plugin>
+
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-pmd-plugin</artifactId>
+                        <version>${maven-pmd-plugin.version}</version>
+                    </plugin>
+
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>taglist-maven-plugin</artifactId>
+                        <version>${org.codehaus.mojo.taglist-maven-plugin.version}</version>
+                    </plugin>
+
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>jdepend-maven-plugin</artifactId>
+                        <version>${org.codehaus.mojo.jdepend-maven-plugin.version}</version>
+                    </plugin>
+
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>findbugs-maven-plugin</artifactId>
+                        <version>${org.codehaus.mojo.findbugs-maven-plugin.version}</version>
+                        <configuration>
+                            <threshold>Low</threshold>
+                            <effort>Max</effort>
+                        </configuration>
+                    </plugin>
+
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>versions-maven-plugin</artifactId>
+                        <version>${versions-maven-plugin.version}</version>
+                        <reportSets>
+                            <reportSet>
+                                <reports>
+                                    <report>dependency-updates-report</report>
+                                    <report>plugin-updates-report</report>
+                                    <report>property-updates-report</report>
+                                </reports>
+                            </reportSet>
+                        </reportSets>
+                    </plugin>
+                </plugins>
+            </reporting>
+
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-source-plugin</artifactId>
+                        <version>${org.apache.maven.plugins.maven-source-plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <id>attach-sources</id>
+                                <goals>
+                                    <goal>jar-no-fork</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <version>${org.apache.maven.plugins.maven-javadoc-plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <id>attach-javadocs</id>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <profile>
+            <id>travis</id>
+            <activation>
+                <property>
+                    <name>env.TRAVIS</name>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>${org.apache.maven.plugins.maven-gpg-plugin.version}</version>
+                        <configuration>
+                            <gpgArguments>
+                                <argument>--batch</argument>
+                            </gpgArguments>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+
+                    <plugin>
+                        <groupId>org.sonatype.plugins</groupId>
+                        <artifactId>nexus-staging-maven-plugin</artifactId>
+                        <version>${org.sonatype.plugins.nexus-staging-maven-plugin.version}</version>
+                        <extensions>true</extensions>
+                        <configuration>
+                            <serverId>ossrh</serverId>
+                            <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                            <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
+                <configuration>
+                    <excludedGroups>nl.ru.test.category.FunctionalTests</excludedGroups>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-enforcer-plugin</artifactId>
+                <version>${maven-enforcer-plugin}</version>
+                <executions>
+                    <execution>
+                        <id>enforce</id>
+                        <configuration>
+                            <rules>
+                                <DependencyConvergence/>
+                            </rules>
+                        </configuration>
+                        <goals>
+                            <goal>enforce</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
