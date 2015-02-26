@@ -123,8 +123,7 @@
             <id>continuous-integration</id>
             <activation>
                 <property>
-                    <name>continuousIntegration</name>
-                    <value>true</value>
+                    <name>env.CONTINUOUS_INTEGRATION</name>
                 </property>
             </activation>
             <distributionManagement>
@@ -283,10 +282,11 @@
         </profile>
 
         <profile>
-            <id>travis</id>
+            <id>deploy-artifacts</id>
             <activation>
                 <property>
-                    <name>env.TRAVIS</name>
+                    <name>deployArtifacts</name>
+                    <value>true</value>
                 </property>
             </activation>
             <build>
