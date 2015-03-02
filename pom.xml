@@ -107,6 +107,9 @@
         <maven-project-info-reports-plugin.version>2.7</maven-project-info-reports-plugin.version>
         <maven-pmd-plugin.version>3.3</maven-pmd-plugin.version>
         <maven-checkstyle-plugin.version>2.13</maven-checkstyle-plugin.version>
+        <maven-checkstyle-plugin.config.location>
+            https://github.com/radboud-university-isc-java/open-source-checkstyle-configuration/releases/download/1.0.0/checkstyle.xml
+        </maven-checkstyle-plugin.config.location>
         <org.codehaus.mojo.taglist-maven-plugin.version>2.4</org.codehaus.mojo.taglist-maven-plugin.version>
         <org.codehaus.mojo.findbugs-maven-plugin.version>3.0.0</org.codehaus.mojo.findbugs-maven-plugin.version>
         <versions-maven-plugin.version>2.1</versions-maven-plugin.version>
@@ -163,6 +166,57 @@
                             <groupId>org.eluder.coveralls</groupId>
                             <artifactId>coveralls-maven-plugin</artifactId>
                             <version>${org.eluder.coveralls.coveralls-maven-plugin.version}</version>
+                        </plugin>
+
+                        <plugin>
+                            <groupId>org.codehaus.mojo</groupId>
+                            <artifactId>findbugs-maven-plugin</artifactId>
+                            <version>${org.codehaus.mojo.findbugs-maven-plugin.version}</version>
+                            <configuration>
+                                <threshold>Low</threshold>
+                                <effort>Max</effort>
+                            </configuration>
+                            <executions>
+                                <execution>
+                                    <phase>verify</phase>
+                                    <goals>
+                                        <goal>check</goal>
+                                    </goals>
+                                </execution>
+                            </executions>
+                        </plugin>
+
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-pmd-plugin</artifactId>
+                            <version>${maven-pmd-plugin.version}</version>
+                            <executions>
+                                <execution>
+                                    <phase>verify</phase>
+                                    <goals>
+                                        <goal>check</goal>
+                                        <goal>cpd-check</goal>
+                                    </goals>
+                                </execution>
+                            </executions>
+                        </plugin>
+
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-checkstyle-plugin</artifactId>
+                            <version>${maven-checkstyle-plugin.version}</version>
+                            <executions>
+                                <execution>
+                                    <phase>verify</phase>
+                                    <goals>
+                                        <goal>check</goal>
+                                    </goals>
+                                    <configuration>
+                                        <configLocation>${maven-checkstyle-plugin.config.location}</configLocation>
+                                        <failOnViolation>true</failOnViolation>
+                                    </configuration>
+                                </execution>
+                            </executions>
                         </plugin>
                     </plugins>
                 </pluginManagement>
@@ -300,9 +354,7 @@
                 <artifactId>maven-checkstyle-plugin</artifactId>
                 <version>${maven-checkstyle-plugin.version}</version>
                 <configuration>
-                    <configLocation>
-                        https://glanslibel2.uci.ru.nl/java/checkstyle-config/raw/master/checkstyle.xml
-                    </configLocation>
+                    <configLocation>${maven-checkstyle-plugin.config.location}</configLocation>
                 </configuration>
                 <reportSets>
                     <reportSet>
@@ -392,39 +444,6 @@
                         </configuration>
                         <goals>
                             <goal>enforce</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>findbugs-maven-plugin</artifactId>
-                <version>${org.codehaus.mojo.findbugs-maven-plugin.version}</version>
-                <configuration>
-                    <threshold>Low</threshold>
-                    <effort>Max</effort>
-                </configuration>
-                <executions>
-                    <execution>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>check</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-pmd-plugin</artifactId>
-                <version>${maven-pmd-plugin.version}</version>
-                <executions>
-                    <execution>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>check</goal>
-                            <goal>cpd-check</goal>
                         </goals>
                     </execution>
                 </executions>
