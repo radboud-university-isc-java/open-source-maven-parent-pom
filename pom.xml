@@ -106,9 +106,10 @@
         <maven-javadoc-plugin.version>2.10.1</maven-javadoc-plugin.version>
         <maven-project-info-reports-plugin.version>2.7</maven-project-info-reports-plugin.version>
         <maven-pmd-plugin.version>3.3</maven-pmd-plugin.version>
-        <maven-checkstyle-plugin.version>2.13</maven-checkstyle-plugin.version>
+        <com.puppycrawl.tools.checkstyle.version>6.4</com.puppycrawl.tools.checkstyle.version>
+        <maven-checkstyle-plugin.version>2.14</maven-checkstyle-plugin.version>
         <maven-checkstyle-plugin.config.location>
-            https://github.com/radboud-university-isc-java/open-source-checkstyle-configuration/releases/download/1.0.0/checkstyle.xml
+            https://github.com/radboud-university-isc-java/open-source-checkstyle-configuration/releases/download/1.0.1/checkstyle.xml
         </maven-checkstyle-plugin.config.location>
         <org.codehaus.mojo.taglist-maven-plugin.version>2.4</org.codehaus.mojo.taglist-maven-plugin.version>
         <org.codehaus.mojo.findbugs-maven-plugin.version>3.0.0</org.codehaus.mojo.findbugs-maven-plugin.version>
@@ -205,6 +206,13 @@
                             <groupId>org.apache.maven.plugins</groupId>
                             <artifactId>maven-checkstyle-plugin</artifactId>
                             <version>${maven-checkstyle-plugin.version}</version>
+                            <dependencies>
+                                <dependency>
+                                    <groupId>com.puppycrawl.tools</groupId>
+                                    <artifactId>checkstyle</artifactId>
+                                    <version>${com.puppycrawl.tools.checkstyle.version}</version>
+                                </dependency>
+                            </dependencies>
                             <executions>
                                 <execution>
                                     <phase>verify</phase>
