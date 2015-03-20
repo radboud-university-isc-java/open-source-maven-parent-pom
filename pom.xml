@@ -10,7 +10,7 @@
     <description>The parent POM file for all Radboud University Java open source projects.</description>
     <url>https://github.com/radboud-university-isc-java/open-source-maven-parent-pom</url>
     <packaging>pom</packaging>
-    <version>1.4.2-SNAPSHOT</version>
+    <version>1.4.2</version>
 
     <scm>
         <url>https://github.com/radboud-university-isc-java/test-categories</url>
@@ -438,6 +438,8 @@
                 <version>${maven-surefire-plugin.version}</version>
                 <configuration>
                     <excludedGroups>nl.ru.test.category.FunctionalTests</excludedGroups>
+                    <parallel>all</parallel>
+                    <useUnlimitedThreads>true</useUnlimitedThreads>
                 </configuration>
             </plugin>
 
