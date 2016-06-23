@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
@@ -14,9 +13,9 @@
 
     <scm>
         <url>https://github.com/radboud-university-isc-java/test-categories</url>
-        <connection>scm:git:git://github.com/radboud-university-isc-java/open-source-maven-parent-pom.git</connection>
+        <connection>scm:git:https://github.com/radboud-university-isc-java/test-categories.git</connection>
         <developerConnection>
-            scm:git:git@github.com:radboud-university-isc-java/open-source-maven-parent-pom.git
+            scm:git:https://github.com/radboud-university-isc-java/test-categories.git
         </developerConnection>
     </scm>
 
@@ -77,6 +76,17 @@
         </developer>
 
         <developer>
+            <email>p.speijers@ru.nl</email>
+            <name>Paul Speijers</name>
+            <url>https://github.com/paulspeijers</url>
+            <organization>Radboud University</organization>
+            <organizationUrl>http://www.ru.nl</organizationUrl>
+            <roles>
+                <role>developer</role>
+            </roles>
+        </developer>
+
+        <developer>
             <email>e.wolswijk@ru.nl</email>
             <name>Ernst Wolswijk</name>
             <url>https://github.com/progig</url>
@@ -106,7 +116,7 @@
         <maven-javadoc-plugin.version>2.10.1</maven-javadoc-plugin.version>
         <maven-project-info-reports-plugin.version>2.7</maven-project-info-reports-plugin.version>
         <maven-pmd-plugin.version>3.3</maven-pmd-plugin.version>
-        <com.puppycrawl.tools.checkstyle.version>6.4</com.puppycrawl.tools.checkstyle.version>
+        <com.puppycrawl.tools.checkstyle.version>6.19</com.puppycrawl.tools.checkstyle.version>
         <maven-checkstyle-plugin.version>2.14</maven-checkstyle-plugin.version>
         <maven-checkstyle-plugin.config.location>
             https://github.com/radboud-university-isc-java/open-source-checkstyle-configuration/releases/download/1.0.1/checkstyle.xml
@@ -122,6 +132,8 @@
         </org.sonatype.plugins.nexus-staging-maven-plugin.version>
         <org.jacoco.jacoco-maven-plugin.version>0.7.3.201502191951</org.jacoco.jacoco-maven-plugin.version>
         <org.eluder.coveralls.coveralls-maven-plugin.version>3.0.1</org.eluder.coveralls.coveralls-maven-plugin.version>
+        <maven-release-plugin.version>2.5.3</maven-release-plugin.version>
+        <project.scm.id>github</project.scm.id>
     </properties>
 
     <profiles>
@@ -433,6 +445,12 @@
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>${maven-release-plugin.version}</version>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven-surefire-plugin.version}</version>
                 <configuration>
@@ -486,4 +504,17 @@
             </snapshots>
         </repository>
     </repositories>
+
+    <distributionManagement>
+        <repository>
+            <id>archiva</id>
+            <name>Releases</name>
+            <url>hhttp://platbuik.uci.ru.nl:8080/archiva/repository/internal/</url>
+        </repository>
+        <snapshotRepository>
+            <id>archiva</id>
+            <name>Snapshots</name>
+            <url>http://platbuik.uci.ru.nl:8080/archiva/repository/snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
 </project>
