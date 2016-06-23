@@ -509,7 +509,7 @@
         <repository>
             <id>archiva</id>
             <name>Releases</name>
-            <url>hhttp://platbuik.uci.ru.nl:8080/archiva/repository/internal/</url>
+            <url>http://platbuik.uci.ru.nl:8080/archiva/repository/internal/</url>
         </repository>
         <snapshotRepository>
             <id>archiva</id>
