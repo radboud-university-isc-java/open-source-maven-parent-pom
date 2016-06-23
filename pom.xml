@@ -8,7 +8,7 @@
     <description>The parent POM file for all Radboud University Java open source projects.</description>
     <url>https://github.com/radboud-university-isc-java/open-source-maven-parent-pom</url>
     <packaging>pom</packaging>
-    <version>1.4.5</version>
+    <version>1.4.6-SNAPSHOT</version>
 
     <scm>
         <url>https://github.com/radboud-university-isc-java/open-source-maven-parent-pom</url>
@@ -16,7 +16,7 @@
         <developerConnection>
             scm:git:https://github.com/radboud-university-isc-java/open-source-maven-parent-pom.git
         </developerConnection>
-      <tag>open-source-maven-parent-pom-1.4.5</tag>
+      <tag>open-source-maven-parent-pom-1.4.4</tag>
   </scm>
 
     <licenses>
