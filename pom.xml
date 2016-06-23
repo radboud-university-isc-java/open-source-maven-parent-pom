@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>nl.ru</groupId>
@@ -12,12 +11,13 @@
     <version>1.4.4-SNAPSHOT</version>
 
     <scm>
-        <url>https://github.com/radboud-university-isc-java/test-categories</url>
-        <connection>scm:git:https://github.com/radboud-university-isc-java/test-categories.git</connection>
+        <url>https://github.com/radboud-university-isc-java/open-source-maven-parent-pom</url>
+        <connection>scm:git:https://github.com/radboud-university-isc-java/open-source-maven-parent-pom.git</connection>
         <developerConnection>
-            scm:git:https://github.com/radboud-university-isc-java/test-categories.git
+            scm:git:https://github.com/radboud-university-isc-java/open-source-maven-parent-pom.git
         </developerConnection>
-    </scm>
+      <tag>open-source-maven-parent-pom-1.4.4</tag>
+  </scm>
 
     <licenses>
         <license>
@@ -469,7 +469,7 @@
                         <id>enforce</id>
                         <configuration>
                             <rules>
-                                <DependencyConvergence/>
+                                <DependencyConvergence />
                             </rules>
                         </configuration>
                         <goals>
